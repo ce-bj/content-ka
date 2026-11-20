@@ -1,0 +1,11 @@
+{
+  "page": "ExternalContentPage",
+  "dataSources": [
+    { "name": "mockExternalContentsData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/external-contents" }, "queryParams": ["system", "mode", "keyword"] }
+  ],
+  "actions": [
+    { "handler": "handleFetchExternalContents", "endpoint": { "method": "GET", "path": "/api/v1/external-contents" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleAdoptExternal", "endpoint": { "method": "POST", "path": "/api/v1/external-contents/{id}/adopt" }, "requestFrom": "param", "responseShape": "object" },
+    { "handler": "handleResyncExternal", "endpoint": { "method": "POST", "path": "/api/v1/external-contents/{id}/sync" }, "requestFrom": "param", "responseShape": "object" }
+  ]
+}

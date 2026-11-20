@@ -1,0 +1,229 @@
+{
+  "page": "ContentEditor",
+  "dataSources": [
+    {
+      "name": "mockContentDetailData",
+      "shape": "object",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/contents/{id}"
+      },
+      "queryParams": [
+        "locale"
+      ]
+    },
+    {
+      "name": "mockScopedFactsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/facts"
+      },
+      "queryParams": [
+        "keyword",
+        "subject",
+        "region"
+      ]
+    },
+    {
+      "name": "mockAssetPickerData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/assets"
+      },
+      "queryParams": [
+        "keyword"
+      ]
+    },
+    {
+      "name": "mockPublishChecksData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/contents/{id}/checks"
+      }
+    },
+    {
+      "name": "mockLocaleVariantsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/contents/{id}/locales"
+      }
+    },
+    {
+      "name": "mockVersionHistoryData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/contents/{id}/versions"
+      }
+    },
+    {
+      "name": "mockGenerationBasisData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/contents/{id}/versions/{version}/basis"
+      }
+    },
+    {
+      "name": "mockCallRecordsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/call-logs"
+      },
+      "queryParams": [
+        "contentId"
+      ]
+    },
+    {
+      "name": "mockContentTypeOptionsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/content-types"
+      }
+    },
+    {
+      "name": "mockContentVariantsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/contents/{id}/variants"
+      }
+    },
+    {
+      "name": "mockCollectionOptionsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/collections"
+      },
+      "queryParams": [
+        "contentId"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "handler": "handleSaveDraft",
+      "endpoint": {
+        "method": "PUT",
+        "path": "/api/v1/contents/{id}/draft"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleSubmitReview",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/contents/{id}/submit"
+      },
+      "requestFrom": "param",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleRunPublishCheck",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/contents/{id}/checks"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleSearchFacts",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/facts"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleAiAssist",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/ai/assist"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleCreateTranslationTask",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/translation-tasks"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleRollbackVersion",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/contents/{id}/versions/{version}/rollback"
+      },
+      "requestFrom": "param",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleOpenPreview",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/contents/{id}/preview-url"
+      },
+      "requestFrom": "param",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleCreateContent",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/contents"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleSaveVariants",
+      "endpoint": {
+        "method": "PUT",
+        "path": "/api/v1/contents/{id}/variants"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleResolveConflictInline",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/conflicts/{id}/resolve"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleRemoveFactRef",
+      "endpoint": {
+        "method": "PATCH",
+        "path": "/api/v1/contents/{id}/references"
+      },
+      "requestFrom": "param",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleFetchCollectionOptions",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/collections"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    }
+  ]
+}

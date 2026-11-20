@@ -1,0 +1,17 @@
+{
+  "page": "DataTables",
+  "dataSources": [
+    { "name": "mockDataTablesData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/data-tables" } },
+    { "name": "mockCatalogRowsData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/data-tables/{tableId}/rows" }, "queryParams": ["keyword", "page", "pageSize"] },
+    { "name": "mockImportPreviewData", "shape": "object", "endpoint": { "method": "POST", "path": "/api/v1/data-tables/{tableId}/imports/preview" } }
+  ],
+  "actions": [
+    { "handler": "handleFetchDataTables", "endpoint": { "method": "GET", "path": "/api/v1/data-tables" }, "requestFrom": "none", "responseShape": "array" },
+    { "handler": "handleFetchTableRows", "endpoint": { "method": "GET", "path": "/api/v1/data-tables/{tableId}/rows" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleUpdateCell", "endpoint": { "method": "PATCH", "path": "/api/v1/data-tables/{tableId}/rows/{rowId}" }, "requestFrom": "body", "responseShape": "object" },
+    { "handler": "handleCreateRow", "endpoint": { "method": "POST", "path": "/api/v1/data-tables/{tableId}/rows" }, "requestFrom": "param", "responseShape": "object" },
+    { "handler": "handlePreviewImport", "endpoint": { "method": "POST", "path": "/api/v1/data-tables/{tableId}/imports/preview" }, "requestFrom": "form", "responseShape": "object" },
+    { "handler": "handleConfirmImport", "endpoint": { "method": "POST", "path": "/api/v1/data-tables/{tableId}/imports" }, "requestFrom": "body", "responseShape": "object" },
+    { "handler": "handleExportTable", "endpoint": { "method": "GET", "path": "/api/v1/data-tables/{tableId}/export" }, "requestFrom": "param", "responseShape": "none" }
+  ]
+}

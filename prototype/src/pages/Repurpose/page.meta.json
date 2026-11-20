@@ -1,0 +1,15 @@
+{
+  "page": "Repurpose",
+  "dataSources": [
+    { "name": "mockSourceContentsData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/contents" }, "queryParams": ["status", "keyword"] },
+    { "name": "mockTargetFormatsData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/repurpose/targets" }, "queryParams": ["sourceContentId"] },
+    { "name": "mockRepurposeOutputsData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/repurpose-jobs/{jobId}/outputs" } }
+  ],
+  "actions": [
+    { "handler": "handleFetchSourceContents", "endpoint": { "method": "GET", "path": "/api/v1/contents" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleFetchTargetFormats", "endpoint": { "method": "GET", "path": "/api/v1/repurpose/targets" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleStartRepurpose", "endpoint": { "method": "POST", "path": "/api/v1/repurpose-jobs" }, "requestFrom": "body", "responseShape": "object" },
+    { "handler": "handleFetchRepurposeOutputs", "endpoint": { "method": "GET", "path": "/api/v1/repurpose-jobs/{jobId}/outputs" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleRegenerateOutput", "endpoint": { "method": "POST", "path": "/api/v1/repurpose-jobs/{jobId}/outputs/{targetId}/regenerate" }, "requestFrom": "param", "responseShape": "object" }
+  ]
+}

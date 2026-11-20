@@ -1,0 +1,148 @@
+{
+  "page": "FactLibrary",
+  "dataSources": [
+    {
+      "name": "mockSubjectsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/fact-subjects"
+      }
+    },
+    {
+      "name": "mockFactsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/facts"
+      },
+      "queryParams": [
+        "subjectId",
+        "status",
+        "syncStatus",
+        "evidenceGrade",
+        "keyword",
+        "page",
+        "pageSize"
+      ]
+    },
+    {
+      "name": "mockFactDetailData",
+      "shape": "object",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/facts/{id}"
+      }
+    },
+    {
+      "name": "mockConflictPrecheckData",
+      "shape": "object",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/facts/precheck"
+      }
+    },
+    {
+      "name": "mockAttributeDefinitionsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/kdh/attribute-definitions"
+      }
+    },
+    {
+      "name": "mockFactChangesData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/facts/changes"
+      },
+      "queryParams": [
+        "days"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "handler": "handleFetchFacts",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/facts"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleFetchFactDetail",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/facts/{id}"
+      },
+      "requestFrom": "param",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handlePrecheckFact",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/facts/precheck"
+      },
+      "requestFrom": "form",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleCreateFact",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/facts"
+      },
+      "requestFrom": "form",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleSyncFact",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/facts/{id}/sync"
+      },
+      "requestFrom": "param",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleExportFacts",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/facts/export"
+      },
+      "requestFrom": "param",
+      "responseShape": "none"
+    },
+    {
+      "handler": "handleFetchAttributeDefinitions",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/kdh/attribute-definitions"
+      },
+      "requestFrom": "none",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleFetchFactChanges",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/facts/changes"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleApplyFactChange",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/facts/changes/{id}/apply"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    }
+  ]
+}

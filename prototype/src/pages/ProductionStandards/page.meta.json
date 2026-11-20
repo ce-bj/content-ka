@@ -1,0 +1,18 @@
+{
+  "page": "ProductionStandards",
+  "dataSources": [
+    { "name": "mockTemplatesData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/generation-templates" }, "queryParams": ["kind", "channelGroup"] },
+    { "name": "mockBrandVoiceData", "shape": "object", "endpoint": { "method": "GET", "path": "/api/v1/brands/{brandId}/voice" } },
+    { "name": "mockGlossaryData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/glossary" }, "queryParams": ["keyword", "domain"] }
+  ],
+  "actions": [
+    { "handler": "handleFetchTemplates", "endpoint": { "method": "GET", "path": "/api/v1/generation-templates" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleCreateTemplate", "endpoint": { "method": "POST", "path": "/api/v1/generation-templates" }, "requestFrom": "form", "responseShape": "object" },
+    { "handler": "handleToggleTemplate", "endpoint": { "method": "PATCH", "path": "/api/v1/generation-templates/{id}" }, "requestFrom": "body", "responseShape": "object" },
+    { "handler": "handleFetchBrandVoice", "endpoint": { "method": "GET", "path": "/api/v1/brands/{brandId}/voice" }, "requestFrom": "param", "responseShape": "object" },
+    { "handler": "handleSaveBrandVoice", "endpoint": { "method": "PUT", "path": "/api/v1/brands/{brandId}/voice" }, "requestFrom": "body", "responseShape": "object" },
+    { "handler": "handleFetchGlossary", "endpoint": { "method": "GET", "path": "/api/v1/glossary" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleImportGlossary", "endpoint": { "method": "POST", "path": "/api/v1/glossary/imports" }, "requestFrom": "form", "responseShape": "object" },
+    { "handler": "handleExportGlossary", "endpoint": { "method": "GET", "path": "/api/v1/glossary/export" }, "requestFrom": "none", "responseShape": "none" }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "page": "OrgScopes",
+  "dataSources": [
+    {
+      "name": "mockOrgUnitsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/org-units"
+      }
+    },
+    {
+      "name": "mockRegionsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/regions"
+      }
+    },
+    {
+      "name": "mockLocalesData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/locales"
+      }
+    },
+    {
+      "name": "mockChannelsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/channels"
+      }
+    },
+    {
+      "name": "mockSitesData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/sites"
+      }
+    }
+  ],
+  "actions": [
+    {
+      "handler": "handleFetchOrgUnits",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/org-units"
+      },
+      "requestFrom": "none",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleCreateOrgUnit",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/org-units"
+      },
+      "requestFrom": "form",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleFetchRegions",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/regions"
+      },
+      "requestFrom": "none",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleCreateRegion",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/regions"
+      },
+      "requestFrom": "form",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleFetchLocales",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/locales"
+      },
+      "requestFrom": "none",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleUpdateLocale",
+      "endpoint": {
+        "method": "PATCH",
+        "path": "/api/v1/locales/{code}"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleFetchChannels",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/channels"
+      },
+      "requestFrom": "none",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleFetchSites",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/sites"
+      },
+      "requestFrom": "none",
+      "responseShape": "array"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "page": "ContentCollections",
+  "dataSources": [
+    {
+      "name": "mockCollectionsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/collections"
+      },
+      "queryParams": [
+        "kind"
+      ]
+    },
+    {
+      "name": "mockCollectionItemsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/collections/{id}/items"
+      }
+    }
+  ],
+  "actions": [
+    {
+      "handler": "handleFetchCollections",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/collections"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleFetchCollectionItems",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/collections/{id}/items"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleCreateCollection",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/collections"
+      },
+      "requestFrom": "form",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleRemoveCollectionItem",
+      "endpoint": {
+        "method": "DELETE",
+        "path": "/api/v1/collections/{id}/items/{contentId}"
+      },
+      "requestFrom": "param",
+      "responseShape": "none"
+    },
+    {
+      "handler": "handleUpdatePinnedVersion",
+      "endpoint": {
+        "method": "PATCH",
+        "path": "/api/v1/collections/{id}/items/{contentId}"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    }
+  ]
+}

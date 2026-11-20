@@ -1,0 +1,77 @@
+{
+  "page": "AuditLog",
+  "dataSources": [
+    {
+      "name": "mockAuditLogsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/audit-logs"
+      },
+      "queryParams": [
+        "keyword",
+        "category",
+        "actorKind",
+        "page",
+        "pageSize"
+      ]
+    },
+    {
+      "name": "mockAuditDetailData",
+      "shape": "object",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/audit-logs/{eventId}"
+      }
+    },
+    {
+      "name": "mockFactTraceData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/audit-logs/trace"
+      },
+      "queryParams": [
+        "factId"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "handler": "handleFetchAuditLogs",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/audit-logs"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleFetchAuditDetail",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/audit-logs/{eventId}"
+      },
+      "requestFrom": "param",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleExportAuditLogs",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/audit-logs/exports"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleFetchTrace",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/audit-logs/trace"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    }
+  ]
+}

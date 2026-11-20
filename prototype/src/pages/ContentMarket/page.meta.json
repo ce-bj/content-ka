@@ -1,0 +1,153 @@
+{
+  "page": "ContentMarket",
+  "dataSources": [
+    {
+      "name": "mockMarketItemsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/market/items"
+      },
+      "queryParams": [
+        "channel",
+        "keyword"
+      ]
+    },
+    {
+      "name": "mockMarketConsumersData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/market/consumers"
+      }
+    },
+    {
+      "name": "mockClaimRecordsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/market/claims"
+      },
+      "queryParams": [
+        "staleOnly"
+      ]
+    },
+    {
+      "name": "mockMarketCollectionsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/market/collections"
+      }
+    },
+    {
+      "name": "mockPendingJoinsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/market/collections/pending-joins"
+      }
+    }
+  ],
+  "actions": [
+    {
+      "handler": "handleFetchMarketItems",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/market/items"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleUpdateChannelTags",
+      "endpoint": {
+        "method": "PUT",
+        "path": "/api/v1/market/items/{id}/channels"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handlePushToConsumer",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/market/items/{id}/push"
+      },
+      "requestFrom": "param",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleUnlistItem",
+      "endpoint": {
+        "method": "PATCH",
+        "path": "/api/v1/market/items/{id}"
+      },
+      "requestFrom": "param",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleFetchConsumers",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/market/consumers"
+      },
+      "requestFrom": "none",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleCreateConsumer",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/market/consumers"
+      },
+      "requestFrom": "form",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleFetchClaimRecords",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/market/claims"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleNotifyReclaim",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/market/claims/{id}/notify"
+      },
+      "requestFrom": "param",
+      "responseShape": "none"
+    },
+    {
+      "handler": "handleFetchCollections",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/market/collections"
+      },
+      "requestFrom": "none",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleCreateCollection",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/market/collections"
+      },
+      "requestFrom": "form",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleRemoveFromCollection",
+      "endpoint": {
+        "method": "DELETE",
+        "path": "/api/v1/market/collections/{id}/items/{contentId}"
+      },
+      "requestFrom": "param",
+      "responseShape": "none"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "page": "TopicPlanner",
+  "dataSources": [
+    { "name": "mockTopicRulesData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/topic-rules" } },
+    { "name": "mockTopicSuggestionsData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/topics" }, "queryParams": ["status"] },
+    { "name": "mockFactGapsData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/topics/fact-gaps" } }
+  ],
+  "actions": [
+    { "handler": "handleFetchTopics", "endpoint": { "method": "GET", "path": "/api/v1/topics" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleAdoptTopic", "endpoint": { "method": "PATCH", "path": "/api/v1/topics/{id}" }, "requestFrom": "param", "responseShape": "object" },
+    { "handler": "handleRejectTopic", "endpoint": { "method": "PATCH", "path": "/api/v1/topics/{id}" }, "requestFrom": "body", "responseShape": "object" },
+    { "handler": "handleCreateTopic", "endpoint": { "method": "POST", "path": "/api/v1/topics" }, "requestFrom": "form", "responseShape": "object" },
+    { "handler": "handleRefreshTopics", "endpoint": { "method": "POST", "path": "/api/v1/topics/refresh" }, "requestFrom": "none", "responseShape": "array" },
+    { "handler": "handleFetchTopicRules", "endpoint": { "method": "GET", "path": "/api/v1/topic-rules" }, "requestFrom": "none", "responseShape": "array" },
+    { "handler": "handleSaveTopicRules", "endpoint": { "method": "PUT", "path": "/api/v1/topic-rules" }, "requestFrom": "body", "responseShape": "array" },
+    { "handler": "handleRequestKdhFact", "endpoint": { "method": "POST", "path": "/api/v1/kdh/fact-requests" }, "requestFrom": "param", "responseShape": "object" }
+  ]
+}

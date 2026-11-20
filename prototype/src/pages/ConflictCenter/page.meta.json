@@ -1,0 +1,10 @@
+{
+  "page": "ConflictCenter",
+  "dataSources": [
+    { "name": "mockConflictsData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/conflicts" }, "queryParams": ["kind", "status"] }
+  ],
+  "actions": [
+    { "handler": "handleFetchConflicts", "endpoint": { "method": "GET", "path": "/api/v1/conflicts" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleResolveConflict", "endpoint": { "method": "POST", "path": "/api/v1/conflicts/{id}/resolve" }, "requestFrom": "body", "responseShape": "object" }
+  ]
+}

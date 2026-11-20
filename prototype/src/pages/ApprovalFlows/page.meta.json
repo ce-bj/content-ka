@@ -1,0 +1,77 @@
+{
+  "page": "ApprovalFlows",
+  "dataSources": [
+    {
+      "name": "mockApprovalFlowsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/approval-flows"
+      }
+    },
+    {
+      "name": "mockApprovalEngineData",
+      "shape": "object",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/approval-engine"
+      }
+    }
+  ],
+  "actions": [
+    {
+      "handler": "handleFetchApprovalFlows",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/approval-flows"
+      },
+      "requestFrom": "none",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleCreateApprovalFlow",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/approval-flows"
+      },
+      "requestFrom": "form",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleSaveApprovalFlow",
+      "endpoint": {
+        "method": "PUT",
+        "path": "/api/v1/approval-flows/{id}"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleSimulateFlow",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/approval-flows/simulate"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleFetchApprovalEngine",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/approval-engine"
+      },
+      "requestFrom": "none",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleSaveApprovalEngine",
+      "endpoint": {
+        "method": "PUT",
+        "path": "/api/v1/approval-engine"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    }
+  ]
+}

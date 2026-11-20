@@ -1,0 +1,15 @@
+{
+  "page": "AutomationFlows",
+  "dataSources": [
+    { "name": "mockAutomationFlowsData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/automation-flows" } },
+    { "name": "mockFlowRunsData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/automation-runs" }, "queryParams": ["flowId", "status"] },
+    { "name": "mockFlowTemplatesData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/automation-flows/templates" } }
+  ],
+  "actions": [
+    { "handler": "handleFetchAutomationFlows", "endpoint": { "method": "GET", "path": "/api/v1/automation-flows" }, "requestFrom": "none", "responseShape": "array" },
+    { "handler": "handleToggleAutomationFlow", "endpoint": { "method": "PATCH", "path": "/api/v1/automation-flows/{id}" }, "requestFrom": "body", "responseShape": "object" },
+    { "handler": "handleRunAutomationFlow", "endpoint": { "method": "POST", "path": "/api/v1/automation-flows/{id}/runs" }, "requestFrom": "param", "responseShape": "object" },
+    { "handler": "handleFetchFlowRuns", "endpoint": { "method": "GET", "path": "/api/v1/automation-runs" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleCreateFlowFromTemplate", "endpoint": { "method": "POST", "path": "/api/v1/automation-flows" }, "requestFrom": "body", "responseShape": "object" }
+  ]
+}

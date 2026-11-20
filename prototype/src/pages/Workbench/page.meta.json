@@ -1,0 +1,13 @@
+{
+  "page": "Workbench",
+  "dataSources": [
+    { "name": "mockTodosData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/workbench/todos" }, "queryParams": ["kind"] },
+    { "name": "mockContentStats", "shape": "object", "endpoint": { "method": "GET", "path": "/api/v1/workbench/stats" } },
+    { "name": "mockHealthIssuesData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/insights/health-issues" } },
+    { "name": "mockActivitiesData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/workbench/activities" }, "queryParams": ["limit"] }
+  ],
+  "actions": [
+    { "handler": "handleFetchTodos", "endpoint": { "method": "GET", "path": "/api/v1/workbench/todos" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleFetchActivities", "endpoint": { "method": "GET", "path": "/api/v1/workbench/activities" }, "requestFrom": "param", "responseShape": "array" }
+  ]
+}

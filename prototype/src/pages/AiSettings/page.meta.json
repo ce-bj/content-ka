@@ -1,0 +1,16 @@
+{
+  "page": "AiSettings",
+  "dataSources": [
+    { "name": "mockAiCapabilitiesData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/ai/capabilities" } },
+    { "name": "mockAiUsageStats", "shape": "object", "endpoint": { "method": "GET", "path": "/api/v1/ai/usage" }, "queryParams": ["month"] },
+    { "name": "mockExternalMcpToolsData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/external-mcp-servers" } }
+  ],
+  "actions": [
+    { "handler": "handleFetchAiCapabilities", "endpoint": { "method": "GET", "path": "/api/v1/ai/capabilities" }, "requestFrom": "none", "responseShape": "array" },
+    { "handler": "handleUpdateAiCapability", "endpoint": { "method": "PATCH", "path": "/api/v1/ai/capabilities/{id}" }, "requestFrom": "body", "responseShape": "object" },
+    { "handler": "handleFetchAiUsage", "endpoint": { "method": "GET", "path": "/api/v1/ai/usage" }, "requestFrom": "param", "responseShape": "object" },
+    { "handler": "handleFetchExternalMcpTools", "endpoint": { "method": "GET", "path": "/api/v1/external-mcp-servers" }, "requestFrom": "none", "responseShape": "array" },
+    { "handler": "handleRegisterMcpServer", "endpoint": { "method": "POST", "path": "/api/v1/external-mcp-servers" }, "requestFrom": "form", "responseShape": "object" },
+    { "handler": "handleToggleMcpServer", "endpoint": { "method": "PATCH", "path": "/api/v1/external-mcp-servers/{id}" }, "requestFrom": "body", "responseShape": "object" }
+  ]
+}

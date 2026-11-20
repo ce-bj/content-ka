@@ -1,0 +1,204 @@
+{
+  "page": "GenerateWizard",
+  "dataSources": [
+    {
+      "name": "mockTemplatesData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/generation-templates"
+      },
+      "queryParams": [
+        "contentTypeName",
+        "kind"
+      ]
+    },
+    {
+      "name": "mockScopedFactsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/facts/scoped"
+      },
+      "queryParams": [
+        "brand",
+        "product",
+        "region"
+      ]
+    },
+    {
+      "name": "mockKdhFactHitsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/kdh/facts/search"
+      },
+      "queryParams": [
+        "query",
+        "product"
+      ]
+    },
+    {
+      "name": "mockUseTimeChecksData",
+      "shape": "array",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/references/check"
+      }
+    },
+    {
+      "name": "mockReferenceContentsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/contents"
+      },
+      "queryParams": [
+        "status",
+        "keyword",
+        "product"
+      ]
+    },
+    {
+      "name": "mockKnowledgeHitsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/knowledge/search"
+      }
+    },
+    {
+      "name": "mockAssetsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/assets"
+      },
+      "queryParams": [
+        "product",
+        "licensed"
+      ]
+    },
+    {
+      "name": "mockGeneratedDraftData",
+      "shape": "object",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/generation-tasks/{taskId}"
+      }
+    },
+    {
+      "name": "mockExternalRefsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/external-contents"
+      },
+      "queryParams": [
+        "product",
+        "keyword"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "handler": "handleFetchTemplates",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/generation-templates"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleFetchScopedFacts",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/facts/scoped"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleSearchKdhFacts",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/kdh/facts/search"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleCheckReference",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/references/check"
+      },
+      "requestFrom": "body",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleReportUseTimeConflict",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/conflicts"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleFetchReferenceContents",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/contents"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleSearchKnowledge",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/knowledge/search"
+      },
+      "requestFrom": "body",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleFetchAssets",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/assets"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleGenerateDraft",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/generation-tasks"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleSaveGeneratedDraft",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/generation-tasks/{taskId}/save-draft"
+      },
+      "requestFrom": "param",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleFetchExternalRefs",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/external-contents"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    }
+  ]
+}

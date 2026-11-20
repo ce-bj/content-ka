@@ -1,0 +1,126 @@
+{
+  "page": "ReviewCenter",
+  "dataSources": [
+    {
+      "name": "mockReviewTasksData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/review-tasks"
+      },
+      "queryParams": [
+        "assignee",
+        "status"
+      ]
+    },
+    {
+      "name": "mockReviewDetailData",
+      "shape": "object",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/review-tasks/{id}"
+      }
+    },
+    {
+      "name": "mockRecheckTasksData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/recheck-tasks"
+      },
+      "queryParams": [
+        "status"
+      ]
+    },
+    {
+      "name": "mockReviewRecordsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/review-records"
+      }
+    },
+    {
+      "name": "mockAgentSuggestionsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/agent-suggestions"
+      }
+    }
+  ],
+  "actions": [
+    {
+      "handler": "handleFetchReviewTasks",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/review-tasks"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleFetchReviewDetail",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/review-tasks/{id}"
+      },
+      "requestFrom": "param",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleApproveReview",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/review-tasks/{id}/approve"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleRejectReview",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/review-tasks/{id}/reject"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleAddApprover",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/review-tasks/{id}/approvers"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleEmergencyRelease",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/review-tasks/{id}/emergency-release"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleResolveRecheck",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/recheck-tasks/{id}/resolve"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleResolveSuggestion",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/agent-suggestions/{id}/resolve"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    }
+  ]
+}

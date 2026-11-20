@@ -1,0 +1,13 @@
+{
+  "page": "ContentList",
+  "dataSources": [
+    { "name": "mockContentTypesData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/content-types" } },
+    { "name": "mockContentsData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/contents" }, "queryParams": ["contentTypeId", "status", "source", "brand", "flag", "keyword", "page", "pageSize"] }
+  ],
+  "actions": [
+    { "handler": "handleFetchContents", "endpoint": { "method": "GET", "path": "/api/v1/contents" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleBatchSubmitReview", "endpoint": { "method": "POST", "path": "/api/v1/contents/batch-submit" }, "requestFrom": "body", "responseShape": "object" },
+    { "handler": "handleBatchUnpublish", "endpoint": { "method": "PATCH", "path": "/api/v1/contents/batch-unpublish" }, "requestFrom": "body", "responseShape": "object" },
+    { "handler": "handleExportContents", "endpoint": { "method": "GET", "path": "/api/v1/contents/export" }, "requestFrom": "param", "responseShape": "none" }
+  ]
+}

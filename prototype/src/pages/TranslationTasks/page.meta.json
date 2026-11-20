@@ -1,0 +1,14 @@
+{
+  "page": "TranslationTasks",
+  "dataSources": [
+    { "name": "mockTranslationTasksData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/translation-tasks" }, "queryParams": ["status"] },
+    { "name": "mockSegmentsData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/translation-tasks/{id}/segments" } }
+  ],
+  "actions": [
+    { "handler": "handleFetchTranslationTasks", "endpoint": { "method": "GET", "path": "/api/v1/translation-tasks" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleFetchSegments", "endpoint": { "method": "GET", "path": "/api/v1/translation-tasks/{id}/segments" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleCreateTranslationTasks", "endpoint": { "method": "POST", "path": "/api/v1/translation-tasks" }, "requestFrom": "form", "responseShape": "array" },
+    { "handler": "handleConfirmSegment", "endpoint": { "method": "PATCH", "path": "/api/v1/translation-tasks/{id}/segments/{segmentId}" }, "requestFrom": "param", "responseShape": "object" },
+    { "handler": "handleCompleteTranslation", "endpoint": { "method": "POST", "path": "/api/v1/translation-tasks/{id}/complete" }, "requestFrom": "param", "responseShape": "object" }
+  ]
+}

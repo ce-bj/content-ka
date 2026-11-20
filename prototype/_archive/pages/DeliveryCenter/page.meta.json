@@ -1,0 +1,20 @@
+{
+  "page": "DeliveryCenter",
+  "dataSources": [
+    { "name": "mockClientAppsData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/client-apps" }, "queryParams": ["kind"] },
+    { "name": "mockMcpToolsData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/mcp/tools" } },
+    { "name": "mockWebhooksData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/webhooks" } },
+    { "name": "mockCallLogsData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/call-logs" }, "queryParams": ["appId", "result", "page", "pageSize"] },
+    { "name": "mockOutputMappingData", "shape": "object", "endpoint": { "method": "GET", "path": "/api/v1/output-mappings/{contentTypeId}" } }
+  ],
+  "actions": [
+    { "handler": "handleFetchClientApps", "endpoint": { "method": "GET", "path": "/api/v1/client-apps" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleCreateClientApp", "endpoint": { "method": "POST", "path": "/api/v1/client-apps" }, "requestFrom": "form", "responseShape": "object" },
+    { "handler": "handleRotateToken", "endpoint": { "method": "POST", "path": "/api/v1/client-apps/{id}/tokens/rotate" }, "requestFrom": "param", "responseShape": "object" },
+    { "handler": "handleToggleClientApp", "endpoint": { "method": "PATCH", "path": "/api/v1/client-apps/{id}" }, "requestFrom": "param", "responseShape": "object" },
+    { "handler": "handleToggleMcpTool", "endpoint": { "method": "PATCH", "path": "/api/v1/mcp/tools/{name}" }, "requestFrom": "param", "responseShape": "object" },
+    { "handler": "handleTestWebhook", "endpoint": { "method": "POST", "path": "/api/v1/webhooks/{id}/test" }, "requestFrom": "param", "responseShape": "object" },
+    { "handler": "handleFetchCallLogs", "endpoint": { "method": "GET", "path": "/api/v1/call-logs" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleSaveOutputMapping", "endpoint": { "method": "PUT", "path": "/api/v1/output-mappings/{contentTypeId}" }, "requestFrom": "body", "responseShape": "object" }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "page": "ContentHealth",
+  "dataSources": [
+    { "name": "mockHealthStats", "shape": "object", "endpoint": { "method": "GET", "path": "/api/v1/insights/health/stats" }, "queryParams": ["brand", "region"] },
+    { "name": "mockHealthBreakdownData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/insights/health/breakdown" }, "queryParams": ["dimension"] },
+    { "name": "mockHealthIssuesData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/insights/health/issues" }, "queryParams": ["issueType", "page"] }
+  ],
+  "actions": [
+    { "handler": "handleFetchHealthStats", "endpoint": { "method": "GET", "path": "/api/v1/insights/health/stats" }, "requestFrom": "param", "responseShape": "object" },
+    { "handler": "handleFetchHealthBreakdown", "endpoint": { "method": "GET", "path": "/api/v1/insights/health/breakdown" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleFetchHealthIssues", "endpoint": { "method": "GET", "path": "/api/v1/insights/health/issues" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleExportHealthReport", "endpoint": { "method": "GET", "path": "/api/v1/insights/health/export" }, "requestFrom": "none", "responseShape": "none" }
+  ]
+}

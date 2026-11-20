@@ -1,0 +1,14 @@
+{
+  "page": "RulesSettings",
+  "dataSources": [
+    { "name": "mockPublishCheckRulesData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/rules/publish-checks" } },
+    { "name": "mockSurvivorshipRulesData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/rules/survivorship" } },
+    { "name": "mockFalseConflictDimensionsData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/rules/survivorship" } }
+  ],
+  "actions": [
+    { "handler": "handleFetchPublishCheckRules", "endpoint": { "method": "GET", "path": "/api/v1/rules/publish-checks" }, "requestFrom": "none", "responseShape": "array" },
+    { "handler": "handleUpdatePublishCheckRule", "endpoint": { "method": "PATCH", "path": "/api/v1/rules/publish-checks/{ruleId}" }, "requestFrom": "body", "responseShape": "object" },
+    { "handler": "handleFetchSurvivorshipRules", "endpoint": { "method": "GET", "path": "/api/v1/rules/survivorship" }, "requestFrom": "none", "responseShape": "object" },
+    { "handler": "handleSaveSurvivorshipRules", "endpoint": { "method": "PUT", "path": "/api/v1/rules/survivorship" }, "requestFrom": "body", "responseShape": "object" }
+  ]
+}

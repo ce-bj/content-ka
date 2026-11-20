@@ -1,0 +1,15 @@
+{
+  "page": "MembersRoles",
+  "dataSources": [
+    { "name": "mockMembersData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/members" }, "queryParams": ["keyword", "roleId", "page", "pageSize"] },
+    { "name": "mockRolesData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/roles" } }
+  ],
+  "actions": [
+    { "handler": "handleFetchMembers", "endpoint": { "method": "GET", "path": "/api/v1/members" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleInviteMember", "endpoint": { "method": "POST", "path": "/api/v1/members/invitations" }, "requestFrom": "form", "responseShape": "object" },
+    { "handler": "handleDisableMember", "endpoint": { "method": "PATCH", "path": "/api/v1/members/{id}" }, "requestFrom": "param", "responseShape": "object" },
+    { "handler": "handleFetchRoles", "endpoint": { "method": "GET", "path": "/api/v1/roles" }, "requestFrom": "none", "responseShape": "array" },
+    { "handler": "handleUpdateRolePermissions", "endpoint": { "method": "PUT", "path": "/api/v1/roles/{roleId}/permissions" }, "requestFrom": "body", "responseShape": "object" },
+    { "handler": "handleCreateRole", "endpoint": { "method": "POST", "path": "/api/v1/roles" }, "requestFrom": "form", "responseShape": "object" }
+  ]
+}

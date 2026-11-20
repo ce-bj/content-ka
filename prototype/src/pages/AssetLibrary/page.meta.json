@@ -1,0 +1,20 @@
+{
+  "page": "AssetLibrary",
+  "dataSources": [
+    { "name": "mockAssetSourcesData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/assets/sources" } },
+    { "name": "mockAssetsData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/assets" }, "queryParams": ["sourceId", "mediaType", "query", "searchMode", "page", "pageSize"] },
+    { "name": "mockAiTasksData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/ai-tasks" }, "queryParams": ["target"] },
+    { "name": "mockAssetDetailData", "shape": "object", "endpoint": { "method": "GET", "path": "/api/v1/assets/{id}" } },
+    { "name": "mockImportConnectorsData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/connectors" }, "queryParams": ["objectKind"] },
+    { "name": "mockExternalFilesData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/connectors/{id}/files" }, "queryParams": ["keyword"] }
+  ],
+  "actions": [
+    { "handler": "handleFetchAssets", "endpoint": { "method": "GET", "path": "/api/v1/assets" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleFetchAssetDetail", "endpoint": { "method": "GET", "path": "/api/v1/assets/{id}" }, "requestFrom": "param", "responseShape": "object" },
+    { "handler": "handleUploadAsset", "endpoint": { "method": "POST", "path": "/api/v1/assets" }, "requestFrom": "form", "responseShape": "object" },
+    { "handler": "handleBrowseExternal", "endpoint": { "method": "GET", "path": "/api/v1/connectors/{id}/files" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleImportAssets", "endpoint": { "method": "POST", "path": "/api/v1/assets/import" }, "requestFrom": "body", "responseShape": "object" },
+    { "handler": "handleConfirmAiTask", "endpoint": { "method": "PATCH", "path": "/api/v1/ai-tasks/{id}" }, "requestFrom": "param", "responseShape": "object" },
+    { "handler": "handleSubmitFactCandidates", "endpoint": { "method": "POST", "path": "/api/v1/facts/candidates" }, "requestFrom": "body", "responseShape": "object" }
+  ]
+}

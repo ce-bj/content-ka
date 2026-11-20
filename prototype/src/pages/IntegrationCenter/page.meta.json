@@ -1,0 +1,139 @@
+{
+  "page": "IntegrationCenter",
+  "dataSources": [
+    {
+      "name": "mockConnectorsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/connectors"
+      },
+      "queryParams": [
+        "objectKind"
+      ]
+    },
+    {
+      "name": "mockSyncJobsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/sync-jobs"
+      },
+      "queryParams": [
+        "connectorId",
+        "status"
+      ]
+    },
+    {
+      "name": "mockSyncIssuesData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/sync-issues"
+      }
+    },
+    {
+      "name": "mockSyncRulesData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/sync-rules"
+      }
+    },
+    {
+      "name": "mockExternalRefsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/external-refs"
+      },
+      "queryParams": [
+        "mode",
+        "sourceState"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "handler": "handleFetchConnectors",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/connectors"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleRunSync",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/connectors/{id}/sync"
+      },
+      "requestFrom": "param",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleCreateConnector",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/connectors"
+      },
+      "requestFrom": "form",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleFetchSyncJobs",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/sync-jobs"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleRetrySyncIssue",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/sync-issues/{id}/retry"
+      },
+      "requestFrom": "param",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleUpdateSyncRule",
+      "endpoint": {
+        "method": "PUT",
+        "path": "/api/v1/sync-rules/{category}"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleReauthorizeConnector",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/connectors/{id}/reauthorize"
+      },
+      "requestFrom": "param",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleUpdateIngestPlans",
+      "endpoint": {
+        "method": "PUT",
+        "path": "/api/v1/connectors/{id}/ingest-plans"
+      },
+      "requestFrom": "body",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleFetchExternalRefs",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/external-refs"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    }
+  ]
+}

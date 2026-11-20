@@ -1,0 +1,19 @@
+{
+  "page": "ContentModelDesigner",
+  "dataSources": [
+    { "name": "mockContentTypesData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/content-types" }, "queryParams": ["kind"] },
+    { "name": "mockContentTypeDetailData", "shape": "object", "endpoint": { "method": "GET", "path": "/api/v1/content-types/{apiId}" } },
+    { "name": "mockComponentsData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/components" } },
+    { "name": "mockAiSchemaSuggestionData", "shape": "object", "endpoint": { "method": "POST", "path": "/api/v1/ai/schema-suggestions" } },
+    { "name": "mockChangesetPreviewData", "shape": "object", "endpoint": { "method": "POST", "path": "/api/v1/content-types/{apiId}/changesets/preview" } }
+  ],
+  "actions": [
+    { "handler": "handleFetchContentTypes", "endpoint": { "method": "GET", "path": "/api/v1/content-types" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleFetchContentTypeDetail", "endpoint": { "method": "GET", "path": "/api/v1/content-types/{apiId}" }, "requestFrom": "param", "responseShape": "object" },
+    { "handler": "handleCreateContentType", "endpoint": { "method": "POST", "path": "/api/v1/content-types" }, "requestFrom": "body", "responseShape": "object" },
+    { "handler": "handleGenerateSchemaByAi", "endpoint": { "method": "POST", "path": "/api/v1/ai/schema-suggestions" }, "requestFrom": "body", "responseShape": "object" },
+    { "handler": "handlePreviewChangeset", "endpoint": { "method": "POST", "path": "/api/v1/content-types/{apiId}/changesets/preview" }, "requestFrom": "body", "responseShape": "object" },
+    { "handler": "handlePublishChangeset", "endpoint": { "method": "POST", "path": "/api/v1/content-types/{apiId}/changesets" }, "requestFrom": "param", "responseShape": "object" },
+    { "handler": "handleExportSchema", "endpoint": { "method": "GET", "path": "/api/v1/content-types/{apiId}/changesets/export" }, "requestFrom": "param", "responseShape": "none" }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "page": "ReleaseBatches",
+  "dataSources": [
+    {
+      "name": "mockReleaseBatchesData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/release-batches"
+      },
+      "queryParams": [
+        "status"
+      ]
+    },
+    {
+      "name": "mockBatchItemsData",
+      "shape": "array",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/release-batches/{id}/items"
+      }
+    }
+  ],
+  "actions": [
+    {
+      "handler": "handleFetchReleaseBatches",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/release-batches"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleFetchBatchItems",
+      "endpoint": {
+        "method": "GET",
+        "path": "/api/v1/release-batches/{id}/items"
+      },
+      "requestFrom": "param",
+      "responseShape": "array"
+    },
+    {
+      "handler": "handleCreateReleaseBatch",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/release-batches"
+      },
+      "requestFrom": "form",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleRecheckBatch",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/release-batches/{id}/check"
+      },
+      "requestFrom": "param",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleScheduleBatch",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/release-batches/{id}/approval"
+      },
+      "requestFrom": "param",
+      "responseShape": "object"
+    },
+    {
+      "handler": "handleRollbackBatch",
+      "endpoint": {
+        "method": "POST",
+        "path": "/api/v1/release-batches/{id}/rollback"
+      },
+      "requestFrom": "param",
+      "responseShape": "object"
+    }
+  ]
+}

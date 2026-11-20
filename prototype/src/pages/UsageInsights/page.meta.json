@@ -1,0 +1,15 @@
+{
+  "page": "UsageInsights",
+  "dataSources": [
+    { "name": "mockUsageStats", "shape": "object", "endpoint": { "method": "GET", "path": "/api/v1/insights/usage/stats" }, "queryParams": ["period"] },
+    { "name": "mockConsumerUsageData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/insights/usage/consumers" }, "queryParams": ["period"] },
+    { "name": "mockContentTypeUsageData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/insights/usage/content-types" }, "queryParams": ["period"] },
+    { "name": "mockContentPerformanceData", "shape": "array", "endpoint": { "method": "GET", "path": "/api/v1/insights/performance" }, "queryParams": ["period", "consumer"] }
+  ],
+  "actions": [
+    { "handler": "handleFetchUsageStats", "endpoint": { "method": "GET", "path": "/api/v1/insights/usage/stats" }, "requestFrom": "param", "responseShape": "object" },
+    { "handler": "handleFetchConsumerUsage", "endpoint": { "method": "GET", "path": "/api/v1/insights/usage/consumers" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleFetchContentTypeUsage", "endpoint": { "method": "GET", "path": "/api/v1/insights/usage/content-types" }, "requestFrom": "param", "responseShape": "array" },
+    { "handler": "handleFetchContentPerformance", "endpoint": { "method": "GET", "path": "/api/v1/insights/performance" }, "requestFrom": "param", "responseShape": "array" }
+  ]
+}
