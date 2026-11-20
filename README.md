@@ -13,7 +13,7 @@ content-ka/
 ├── docs/
 │   ├── 01-调研报告.md         背景、HubSpot 对标、厂商调研
 │   ├── 02-产品PRD.md          产品需求：背景、范围、架构图、流程图、功能清单
-│   └── 归档/                  早期讨论稿与上一版 PRD
+│   └── 归档/                  早期讨论稿
 ├── prototype/                交互原型（React + Vite）
 │   ├── src/pages/            25 个页面，每页一个目录：<Page>.tsx + page.meta.json
 │   ├── src/components/       外壳布局、共用组件
